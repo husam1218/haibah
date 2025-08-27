@@ -20,7 +20,24 @@
     </header>
     <main>
       <div class="hint">سيتم فتح محرر Decap CMS أدناه. تأكد من إعداد صلاحيات GitHub وNetlify.</div>
+      <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
       <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+      <script>
+        (function(){
+          if (!window.netlifyIdentity) return;
+          // Optional: clear stale session when visiting /admin/?logout
+          if (new URLSearchParams(location.search).has('logout')) {
+            try { window.netlifyIdentity.logout(); } catch(e) {}
+          }
+          window.netlifyIdentity.on('init', function(user){
+            if (!user) {
+              // Auto-open login to complete confirmation/login
+              try { window.netlifyIdentity.open(); } catch(e) {}
+              window.netlifyIdentity.on('login', function(){ location.replace('/admin/'); });
+            }
+          });
+        })();
+      </script>
     </main>
   </body>
 </html>

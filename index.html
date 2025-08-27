@@ -103,7 +103,26 @@
         </div>
     </footer>
 
+    <!-- Netlify Identity on homepage to handle invite/confirmation links -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script src="assets/js/app.js"></script>
+    <script>
+      (function(){
+        if (!window.netlifyIdentity) return;
+        // If arriving via invite/confirmation link, ensure modal opens to finish signup
+        var hasToken = (location.hash && (location.hash.indexOf('invite_token') !== -1 || location.hash.indexOf('confirmation_token') !== -1)) ||
+                       (location.search && (location.search.indexOf('invite_token') !== -1 || location.search.indexOf('confirmation_token') !== -1));
+        window.netlifyIdentity.on('init', function(user){
+          if (!user && hasToken) {
+            try { window.netlifyIdentity.open('signup'); } catch(e) { window.netlifyIdentity.open(); }
+          }
+        });
+        window.netlifyIdentity.on('login', function(){
+          // After finishing signup/login, go to admin
+          location.replace('/admin/');
+        });
+      })();
+    </script>
 </body>
 </html>
 
