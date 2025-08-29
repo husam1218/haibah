@@ -8,37 +8,286 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
     <style>
-      body { margin: 0; font-family: 'Cairo', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-      header { padding: .8rem 1rem; border-bottom: 1px solid #e5e7eb; }
-      main { padding: 1rem; }
-      .hint { color: #475569; }
+      :root {
+        --bg: #0f1115;
+        --card: #141821;
+        --soft: #0d1220;
+        --text: #e5e7eb;
+        --muted: #94a3b8;
+        --primary: #22c55e;
+        --primary-ink: #052e1a;
+        --accent: #0991ff;
+      }
+
+      * { 
+        box-sizing: border-box; 
+        margin: 0;
+        padding: 0;
+      }
+
+      html { 
+        scroll-behavior: smooth; 
+        font-size: 16px;
+      }
+
+      body { 
+        margin: 0; 
+        font-family: 'Cairo', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        background: radial-gradient(1200px 800px at 80% -10%, #0b1224, var(--bg));
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .container {
+        width: min(1200px, 92vw);
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      header { 
+        background: rgba(10,12,18,.95);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid #202637;
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+
+      .header-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        text-align: center;
+      }
+
+      .header-title {
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        font-weight: 700;
+        color: var(--text);
+      }
+
+      .header-subtitle {
+        font-size: 0.95rem;
+        color: var(--muted);
+        max-width: 600px;
+      }
+
+      main { 
+        flex: 1;
+        padding: 2rem 0;
+      }
+
+      .admin-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .hint { 
+        color: var(--muted);
+        background: rgba(15, 23, 42, 0.3);
+        border: 1px solid #1e283f;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .cms-container {
+        background: var(--card);
+        border: 1px solid #1e283f;
+        border-radius: 16px;
+        overflow: hidden;
+        min-height: 600px;
+      }
+
+      .loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 400px;
+        color: var(--muted);
+        font-size: 1.1rem;
+      }
+
+      .spinner {
+        width: 24px;
+        height: 24px;
+        border: 2px solid #334155;
+        border-top: 2px solid var(--primary);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-left: 0.5rem;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      .mobile-tips {
+        background: rgba(34, 197, 94, 0.1);
+        border: 1px solid rgba(34, 197, 94, 0.3);
+        border-radius: 12px;
+        padding: 1rem;
+        margin: 1rem 0;
+        text-align: center;
+      }
+
+      .mobile-tips h3 {
+        color: var(--primary);
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .mobile-tips ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: right;
+      }
+
+      .mobile-tips li {
+        margin: 0.3rem 0;
+        font-size: 0.9rem;
+        color: var(--text);
+      }
+
+      .mobile-tips li::before {
+        content: '📱';
+        margin-left: 0.5rem;
+      }
+
+      /* Tablet styles */
+      @media (min-width: 768px) {
+        .header-content {
+          flex-direction: row;
+          justify-content: space-between;
+          text-align: left;
+        }
+
+        .hint {
+          text-align: left;
+        }
+
+        .mobile-tips {
+          text-align: left;
+        }
+
+        .mobile-tips ul {
+          text-align: right;
+        }
+      }
+
+      /* Desktop styles */
+      @media (min-width: 1024px) {
+        .container {
+          padding: 0;
+        }
+
+        main {
+          padding: 3rem 0;
+        }
+      }
+
+      /* Touch-friendly improvements */
+      @media (hover: none) and (pointer: coarse) {
+        .hint, .mobile-tips {
+          padding: 1.8rem;
+        }
+      }
+
+      /* High contrast mode support */
+      @media (prefers-contrast: high) {
+        .hint, .mobile-tips, .cms-container {
+          border: 2px solid var(--text);
+        }
+      }
+
+      /* Reduced motion support */
+      @media (prefers-reduced-motion: reduce) {
+        .spinner {
+          animation: none;
+        }
+      }
     </style>
   </head>
   <body>
     <header>
-      <strong>لوحة التحكم</strong>
+      <div class="container">
+        <div class="header-content">
+          <div>
+            <h1 class="header-title">لوحة التحكم</h1>
+            <p class="header-subtitle">إدارة محتوى موقع محلات الهيبة للدهان</p>
+          </div>
+        </div>
+      </div>
     </header>
+
     <main>
-      <div class="hint">سيتم فتح محرر Decap CMS أدناه. تأكد من إعداد صلاحيات GitHub وNetlify.</div>
-      <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-      <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-      <script>
-        (function(){
-          if (!window.netlifyIdentity) return;
-          // Optional: clear stale session when visiting /admin/?logout
-          if (new URLSearchParams(location.search).has('logout')) {
-            try { window.netlifyIdentity.logout(); } catch(e) {}
-          }
-          window.netlifyIdentity.on('init', function(user){
-            if (!user) {
-              // Auto-open login to complete confirmation/login
-              try { window.netlifyIdentity.open(); } catch(e) {}
-              window.netlifyIdentity.on('login', function(){ location.replace('/admin/'); });
-            }
-          });
-        })();
-      </script>
+      <div class="container">
+        <div class="admin-content">
+          <div class="hint">
+            <strong>مرحباً بك في لوحة التحكم!</strong><br>
+            سيتم فتح محرر Decap CMS أدناه. تأكد من إعداد صلاحيات GitHub وNetlify.
+          </div>
+
+          <div class="mobile-tips">
+            <h3>نصائح للاستخدام على الهاتف:</h3>
+            <ul>
+              <li>استخدم وضع الشاشة الكاملة للحصول على تجربة أفضل</li>
+              <li>يمكنك تدوير الهاتف أفقياً لرؤية المزيد من المحتوى</li>
+              <li>استخدم التكبير/التصغير للوصول إلى العناصر الصغيرة</li>
+              <li>احفظ التغييرات بشكل متكرر لتجنب فقدان البيانات</li>
+            </ul>
+          </div>
+
+          <div class="cms-container">
+            <div class="loading">
+              جاري تحميل محرر المحتوى...
+              <div class="spinner"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
+
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script>
+      (function(){
+        if (!window.netlifyIdentity) return;
+        
+        // Optional: clear stale session when visiting /admin/?logout
+        if (new URLSearchParams(location.search).has('logout')) {
+          try { window.netlifyIdentity.logout(); } catch(e) {}
+        }
+        
+        window.netlifyIdentity.on('init', function(user){
+          if (!user) {
+            // Auto-open login to complete confirmation/login
+            try { window.netlifyIdentity.open(); } catch(e) {}
+            window.netlifyIdentity.on('login', function(){ location.replace('/admin/'); });
+          }
+        });
+
+        // Hide loading spinner when CMS is ready
+        window.addEventListener('load', function() {
+          setTimeout(function() {
+            const loading = document.querySelector('.loading');
+            if (loading) {
+              loading.style.display = 'none';
+            }
+          }, 2000);
+        });
+      })();
+    </script>
   </body>
 </html>
 
