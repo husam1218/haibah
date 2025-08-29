@@ -216,6 +216,77 @@
           animation: none;
         }
       }
+
+      /* Mobile-specific improvements */
+      @media (max-width: 480px) {
+        .container {
+          padding: 0 0.8rem;
+        }
+        
+        .hint, .mobile-tips {
+          padding: 1.2rem;
+          margin: 1rem 0;
+        }
+        
+        .mobile-tips li {
+          padding: 0.8rem;
+          font-size: 0.9rem;
+        }
+        
+        .header-title {
+          font-size: 1.6rem;
+        }
+        
+        .header-subtitle {
+          font-size: 0.9rem;
+        }
+      }
+
+      /* Landscape mobile optimization */
+      @media (max-width: 768px) and (orientation: landscape) {
+        .header-content {
+          flex-direction: row;
+          justify-content: space-between;
+          text-align: left;
+        }
+        
+        .cms-container {
+          min-height: 70vh;
+        }
+      }
+
+      /* Touch device optimizations */
+      @media (hover: none) and (pointer: coarse) {
+        .mobile-tips li {
+          min-height: 48px;
+          display: flex;
+          align-items: center;
+        }
+        
+        .cms-container {
+          min-height: 80vh;
+        }
+      }
+
+      /* Mobile CMS container optimization */
+      .cms-container {
+        transition: all 0.3s ease;
+      }
+
+      @media (max-width: 768px) {
+        .cms-container {
+          margin: 0 -1rem;
+          border-radius: 0;
+          min-height: 80vh;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .cms-container {
+          margin: 0 -0.8rem;
+          min-height: 85vh;
+        }
+      }
     </style>
   </head>
   <body>
