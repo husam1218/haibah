@@ -299,6 +299,33 @@
         overflow: hidden;
       }
 
+      /* When CMS is active, hide our custom elements */
+      .cms-active .welcome-section,
+      .cms-active .mobile-tips {
+        display: none !important;
+      }
+
+      .cms-active .cms-section {
+        display: block !important;
+        min-height: 100vh;
+        padding: 0;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+      }
+
+      .cms-active .cms-container {
+        min-height: 100vh;
+        border: none;
+        border-radius: 0;
+        background: transparent;
+      }
+
+      .cms-active .cms-header {
+        display: none;
+      }
+
       .cms-loading {
         text-align: center;
         color: var(--text-secondary);
@@ -628,6 +655,9 @@
             loginBtn.onclick = function() {
               window.netlifyIdentity.logout();
             };
+            
+            // If user is logged in, show CMS and hide welcome sections
+            showCMS();
           } else {
             loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> تسجيل الدخول';
             loginBtn.onclick = function() {
@@ -639,6 +669,30 @@
           }
         });
 
+        // Function to show CMS and hide welcome sections
+        function showCMS() {
+          const welcomeSection = document.querySelector('.welcome-section');
+          const mobileTips = document.querySelector('.mobile-tips');
+          const cmsSection = document.querySelector('.cms-section');
+          const cmsLoading = document.getElementById('cmsLoading');
+          
+          // Add CMS active class to body
+          document.body.classList.add('cms-active');
+          
+          if (welcomeSection) welcomeSection.style.display = 'none';
+          if (mobileTips) mobileTips.style.display = 'none';
+          if (cmsSection) cmsSection.style.display = 'block';
+          
+          // Initialize Decap CMS
+          if (window.DecapCMS) {
+            try {
+              window.DecapCMS.init();
+            } catch(e) {
+              console.log('CMS already initialized');
+            }
+          }
+        }
+
         // Hide loading spinner when CMS is ready
         window.addEventListener('load', function() {
           setTimeout(function() {
@@ -646,7 +700,7 @@
             if (loading) {
               loading.style.display = 'none';
             }
-          }, 3000);
+          }, 2000);
         });
 
         // Add touch feedback for mobile
