@@ -138,3 +138,4 @@ The website is now fully optimized for mobile devices with:
 - ✅ Cross-device compatibility
 
 Users can now enjoy a seamless mobile browsing experience, and administrators can efficiently manage content from their mobile devices.
+
