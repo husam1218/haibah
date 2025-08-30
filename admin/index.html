@@ -313,6 +313,12 @@
         border-radius: 0;
         box-shadow: none;
         border: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9999;
       }
 
       .cms-active .cms-container {
@@ -320,10 +326,35 @@
         border: none;
         border-radius: 0;
         background: transparent;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
       }
 
       .cms-active .cms-header {
         display: none;
+      }
+
+      /* Hide header when CMS is active */
+      .cms-active .header {
+        display: none !important;
+      }
+
+      /* Ensure CMS takes full viewport */
+      .cms-active {
+        overflow: hidden;
+      }
+
+      .cms-active .main {
+        padding: 0;
+        margin: 0;
+        max-width: none;
+      }
+
+      .cms-active .content-grid {
+        gap: 0;
       }
 
       .cms-loading {
@@ -446,6 +477,46 @@
 
         .feature-item, .tips-item {
           padding: 1rem;
+        }
+      }
+
+      /* Mobile-specific CMS optimizations */
+      @media (max-width: 768px) {
+        .cms-active .cms-section {
+          position: fixed !important;
+          top: 0 !important;
+          left: 0 !important;
+          right: 0 !important;
+          bottom: 0 !important;
+          width: 100vw !important;
+          height: 100vh !important;
+          min-height: 100vh !important;
+          max-height: 100vh !important;
+          overflow: hidden !important;
+        }
+
+        .cms-active .cms-container {
+          position: absolute !important;
+          top: 0 !important;
+          left: 0 !important;
+          right: 0 !important;
+          bottom: 0 !important;
+          width: 100% !important;
+          height: 100% !important;
+          min-height: 100vh !important;
+          max-height: 100vh !important;
+        }
+
+        /* Ensure Decap CMS gets full mobile viewport */
+        .cms-active .DecapCMS {
+          width: 100vw !important;
+          height: 100vh !important;
+          max-width: 100vw !important;
+          max-height: 100vh !important;
+        }
+
+        .cms-active .DecapCMS * {
+          max-width: 100vw !important;
         }
       }
 
@@ -653,6 +724,8 @@
           if (user) {
             loginBtn.innerHTML = '<i class="fas fa-user"></i> مرحباً ' + (user.user_metadata.full_name || 'المستخدم');
             loginBtn.onclick = function() {
+              // Restore normal viewport before logout
+              restoreViewport();
               window.netlifyIdentity.logout();
             };
             
@@ -683,14 +756,47 @@
           if (mobileTips) mobileTips.style.display = 'none';
           if (cmsSection) cmsSection.style.display = 'block';
           
-          // Initialize Decap CMS
-          if (window.DecapCMS) {
-            try {
-              window.DecapCMS.init();
-            } catch(e) {
-              console.log('CMS already initialized');
-            }
+          // Hide loading spinner
+          if (cmsLoading) cmsLoading.style.display = 'none';
+          
+          // Force full viewport on mobile
+          if (window.innerWidth <= 768) {
+            document.documentElement.style.overflow = 'hidden';
+            document.body.style.overflow = 'hidden';
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+            document.body.style.height = '100%';
           }
+          
+          // Initialize Decap CMS with a slight delay to ensure DOM is ready
+          setTimeout(function() {
+            if (window.DecapCMS) {
+              try {
+                window.DecapCMS.init();
+              } catch(e) {
+                console.log('CMS already initialized');
+              }
+            }
+          }, 100);
+        }
+
+        // Function to restore normal viewport
+        function restoreViewport() {
+          document.body.classList.remove('cms-active');
+          document.documentElement.style.overflow = '';
+          document.body.style.overflow = '';
+          document.body.style.position = '';
+          document.body.style.width = '';
+          document.body.style.height = '';
+          
+          // Show welcome sections again
+          const welcomeSection = document.querySelector('.welcome-section');
+          const mobileTips = document.querySelector('.mobile-tips');
+          const cmsSection = document.querySelector('.cms-section');
+          
+          if (welcomeSection) welcomeSection.style.display = 'block';
+          if (mobileTips) mobileTips.style.display = 'block';
+          if (cmsSection) cmsSection.style.display = 'none';
         }
 
         // Hide loading spinner when CMS is ready
