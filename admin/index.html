@@ -12,7 +12,6 @@
       :root {
         --primary: #6366f1;
         --primary-dark: #4f46e5;
-        --primary-light: #a5b4fc;
         --secondary: #10b981;
         --accent: #f59e0b;
         --success: #22c55e;
@@ -21,7 +20,6 @@
         
         --bg-primary: #ffffff;
         --bg-secondary: #f8fafc;
-        --bg-tertiary: #f1f5f9;
         --bg-card: #ffffff;
         
         --text-primary: #1e293b;
@@ -41,7 +39,6 @@
         --radius-2xl: 1.5rem;
         
         --transition: all 0.2s ease;
-        --transition-slow: all 0.3s ease;
       }
 
       * {
@@ -258,6 +255,68 @@
         opacity: 0.8;
       }
 
+      /* Mobile Tips */
+      .mobile-tips {
+        background: linear-gradient(135deg, var(--accent) 0%, #fbbf24 100%);
+        border-radius: var(--radius-2xl);
+        padding: 1.5rem;
+        color: white;
+        box-shadow: var(--shadow-lg);
+      }
+
+      .tips-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+      }
+
+      .tips-icon {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: var(--radius-lg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+      }
+
+      .tips-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      .tips-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      .tips-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-lg);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .tips-item i {
+        color: var(--accent);
+        font-size: 1rem;
+      }
+
+      .tips-text {
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+
       /* CMS Section */
       .cms-section {
         background: var(--bg-card);
@@ -297,64 +356,6 @@
         justify-content: center;
         position: relative;
         overflow: hidden;
-      }
-
-      /* When CMS is active, hide our custom elements */
-      .cms-active .welcome-section,
-      .cms-active .mobile-tips {
-        display: none !important;
-      }
-
-      .cms-active .cms-section {
-        display: block !important;
-        min-height: 100vh;
-        padding: 0;
-        margin: 0;
-        border-radius: 0;
-        box-shadow: none;
-        border: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 9999;
-      }
-
-      .cms-active .cms-container {
-        min-height: 100vh;
-        border: none;
-        border-radius: 0;
-        background: transparent;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-      }
-
-      .cms-active .cms-header {
-        display: none;
-      }
-
-      /* Hide header when CMS is active */
-      .cms-active .header {
-        display: none !important;
-      }
-
-      /* Ensure CMS takes full viewport */
-      .cms-active {
-        overflow: hidden;
-      }
-
-      .cms-active .main {
-        padding: 0;
-        margin: 0;
-        max-width: none;
-      }
-
-      .cms-active .content-grid {
-        gap: 0;
       }
 
       .cms-loading {
@@ -471,115 +472,9 @@
           min-height: 48px;
         }
 
-        .cms-container {
-          min-height: 60vh;
-        }
-
         .feature-item, .tips-item {
           padding: 1rem;
         }
-      }
-
-      /* Mobile-specific CMS optimizations */
-      @media (max-width: 768px) {
-        .cms-active .cms-section {
-          position: fixed !important;
-          top: 0 !important;
-          left: 0 !important;
-          right: 0 !important;
-          bottom: 0 !important;
-          width: 100vw !important;
-          height: 100vh !important;
-          min-height: 100vh !important;
-          max-height: 100vh !important;
-          overflow: hidden !important;
-        }
-
-        .cms-active .cms-container {
-          position: absolute !important;
-          top: 0 !important;
-          left: 0 !important;
-          right: 0 !important;
-          bottom: 0 !important;
-          width: 100% !important;
-          height: 100% !important;
-          min-height: 100vh !important;
-          max-height: 100vh !important;
-        }
-
-        /* Ensure Decap CMS gets full mobile viewport */
-        .cms-active .DecapCMS {
-          width: 100vw !important;
-          height: 100vh !important;
-          max-width: 100vw !important;
-          max-height: 100vh !important;
-        }
-
-        .cms-active .DecapCMS * {
-          max-width: 100vw !important;
-        }
-      }
-
-      /* Mobile Tips */
-      .mobile-tips {
-        background: linear-gradient(135deg, var(--accent) 0%, #fbbf24 100%);
-        border-radius: var(--radius-2xl);
-        padding: 1.5rem;
-        color: white;
-        box-shadow: var(--shadow-lg);
-      }
-
-      .tips-header {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        margin-bottom: 1rem;
-      }
-
-      .tips-icon {
-        width: 40px;
-        height: 40px;
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: var(--radius-lg);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.25rem;
-      }
-
-      .tips-title {
-        font-size: 1.125rem;
-        font-weight: 600;
-        margin: 0;
-      }
-
-      .tips-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: grid;
-        gap: 0.75rem;
-      }
-
-      .tips-item {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        padding: 0.75rem;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: var(--radius-lg);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-      }
-
-      .tips-item i {
-        color: var(--accent);
-        font-size: 1rem;
-      }
-
-      .tips-text {
-        font-size: 0.875rem;
-        font-weight: 500;
       }
 
       /* Dark mode support */
@@ -623,70 +518,70 @@
         <div class="content-grid">
             <section class="welcome-section">
                 <div class="welcome-content">
-                                <h2 class="welcome-title">مرحباً بك في لوحة التحكم</h2>
-            <p class="welcome-subtitle">إدارة محتوى موقع محلات الهيبة للدهان بسهولة وأمان</p>
-            
-            <div class="welcome-features">
-              <div class="feature-item">
-                <div class="feature-icon">
-                  <i class="fas fa-image"></i>
-                </div>
-                <div class="feature-text">
-                  <div class="feature-title">إدارة الصور</div>
-                  <div class="feature-desc">رفع وتنظيم الصور بسهولة</div>
-                </div>
-              </div>
-              
-              <div class="feature-item">
-                <div class="feature-icon">
-                  <i class="fas fa-edit"></i>
-                </div>
-                <div class="feature-text">
-                  <div class="feature-title">تعديل المحتوى</div>
-                  <div class="feature-desc">تحديث النصوص والمعلومات</div>
-                </div>
-              </div>
-              
-              <div class="feature-item">
-                <div class="feature-icon">
-                  <i class="fas fa-mobile-alt"></i>
-                </div>
-                <div class="feature-text">
-                  <div class="feature-title">متوافق مع الهاتف</div>
-                  <div class="feature-desc">استخدم من أي جهاز</div>
-                </div>
-              </div>
-            </div>
+                    <h2 class="welcome-title">مرحباً بك في لوحة التحكم</h2>
+                    <p class="welcome-subtitle">إدارة محتوى موقع محلات الهيبة للدهان بسهولة وأمان</p>
+                    
+                    <div class="welcome-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-image"></i>
+                            </div>
+                            <div class="feature-text">
+                                <div class="feature-title">إدارة الصور</div>
+                                <div class="feature-desc">رفع وتنظيم الصور بسهولة</div>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-edit"></i>
+                            </div>
+                            <div class="feature-text">
+                                <div class="feature-title">تعديل المحتوى</div>
+                                <div class="feature-desc">تحديث النصوص والمعلومات</div>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="feature-text">
+                                <div class="feature-title">متوافق مع الهاتف</div>
+                                <div class="feature-desc">استخدم من أي جهاز</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             <!-- Mobile Tips Section -->
             <section class="mobile-tips">
-              <div class="tips-header">
-                <div class="tips-icon">
-                  <i class="fas fa-mobile-alt"></i>
+                <div class="tips-header">
+                    <div class="tips-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="tips-title">نصائح للاستخدام على الهاتف</h3>
                 </div>
-                <h3 class="tips-title">نصائح للاستخدام على الهاتف</h3>
-              </div>
-              
-              <ul class="tips-list">
-                <li class="tips-item">
-                  <i class="fas fa-expand"></i>
-                  <span class="tips-text">استخدم وضع الشاشة الكاملة للحصول على تجربة أفضل</span>
-                </li>
-                <li class="tips-item">
-                  <i class="fas fa-rotate"></i>
-                  <span class="tips-text">يمكنك تدوير الهاتف أفقياً لرؤية المزيد من المحتوى</span>
-                </li>
-                <li class="tips-item">
-                  <i class="fas fa-search-plus"></i>
-                  <span class="tips-text">استخدم التكبير/التصغير للوصول إلى العناصر الصغيرة</span>
-                </li>
-                <li class="tips-item">
-                  <i class="fas fa-save"></i>
-                  <span class="tips-text">احفظ التغييرات بشكل متكرر لتجنب فقدان البيانات</span>
-                </li>
-              </ul>
+                
+                <ul class="tips-list">
+                    <li class="tips-item">
+                        <i class="fas fa-expand"></i>
+                        <span class="tips-text">استخدم وضع الشاشة الكاملة للحصول على تجربة أفضل</span>
+                    </li>
+                    <li class="tips-item">
+                        <i class="fas fa-rotate"></i>
+                        <span class="tips-text">يمكنك تدوير الهاتف أفقياً لرؤية المزيد من المحتوى</span>
+                    </li>
+                    <li class="tips-item">
+                        <i class="fas fa-search-plus"></i>
+                        <span class="tips-text">استخدم التكبير/التصغير للوصول إلى العناصر الصغيرة</span>
+                    </li>
+                    <li class="tips-item">
+                        <i class="fas fa-save"></i>
+                        <span class="tips-text">احفظ التغييرات بشكل متكرر لتجنب فقدان البيانات</span>
+                    </li>
+                </ul>
             </section>
 
             <section class="cms-section" id="cms">
@@ -709,119 +604,86 @@
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script>
-      (function(){
-        if (!window.netlifyIdentity) return;
-        
-        // Clear stale session when visiting /admin/?logout
-        if (new URLSearchParams(location.search).has('logout')) {
-          try { window.netlifyIdentity.logout(); } catch(e) {}
-        }
-        
-        // Update login button text when user is logged in
-        window.netlifyIdentity.on('init', function(user){
-          const loginBtn = document.querySelector('.btn-primary');
-          
-          if (user) {
-            loginBtn.innerHTML = '<i class="fas fa-user"></i> مرحباً ' + (user.user_metadata.full_name || 'المستخدم');
-            loginBtn.onclick = function() {
-              // Restore normal viewport before logout
-              restoreViewport();
-              window.netlifyIdentity.logout();
-            };
+        (function(){
+            if (!window.netlifyIdentity) return;
             
-            // If user is logged in, show CMS and hide welcome sections
-            showCMS();
-          } else {
-            loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> تسجيل الدخول';
-            loginBtn.onclick = function() {
-              window.netlifyIdentity.open();
-            };
-            window.netlifyIdentity.on('login', function(){
-              location.replace('/admin/');
-            });
-          }
-        });
-
-        // Function to show CMS and hide welcome sections
-        function showCMS() {
-          const welcomeSection = document.querySelector('.welcome-section');
-          const mobileTips = document.querySelector('.mobile-tips');
-          const cmsSection = document.querySelector('.cms-section');
-          const cmsLoading = document.getElementById('cmsLoading');
-          
-          // Add CMS active class to body
-          document.body.classList.add('cms-active');
-          
-          if (welcomeSection) welcomeSection.style.display = 'none';
-          if (mobileTips) mobileTips.style.display = 'none';
-          if (cmsSection) cmsSection.style.display = 'block';
-          
-          // Hide loading spinner
-          if (cmsLoading) cmsLoading.style.display = 'none';
-          
-          // Force full viewport on mobile
-          if (window.innerWidth <= 768) {
-            document.documentElement.style.overflow = 'hidden';
-            document.body.style.overflow = 'hidden';
-            document.body.style.position = 'fixed';
-            document.body.style.width = '100%';
-            document.body.style.height = '100%';
-          }
-          
-          // Initialize Decap CMS with a slight delay to ensure DOM is ready
-          setTimeout(function() {
-            if (window.DecapCMS) {
-              try {
-                window.DecapCMS.init();
-              } catch(e) {
-                console.log('CMS already initialized');
-              }
+            // Clear stale session when visiting /admin/?logout
+            if (new URLSearchParams(location.search).has('logout')) {
+                try { window.netlifyIdentity.logout(); } catch(e) {}
             }
-          }, 100);
-        }
-
-        // Function to restore normal viewport
-        function restoreViewport() {
-          document.body.classList.remove('cms-active');
-          document.documentElement.style.overflow = '';
-          document.body.style.overflow = '';
-          document.body.style.position = '';
-          document.body.style.width = '';
-          document.body.style.height = '';
-          
-          // Show welcome sections again
-          const welcomeSection = document.querySelector('.welcome-section');
-          const mobileTips = document.querySelector('.mobile-tips');
-          const cmsSection = document.querySelector('.cms-section');
-          
-          if (welcomeSection) welcomeSection.style.display = 'block';
-          if (mobileTips) mobileTips.style.display = 'block';
-          if (cmsSection) cmsSection.style.display = 'none';
-        }
-
-        // Hide loading spinner when CMS is ready
-        window.addEventListener('load', function() {
-          setTimeout(function() {
-            const loading = document.getElementById('cmsLoading');
-            if (loading) {
-              loading.style.display = 'none';
-            }
-          }, 2000);
-        });
-
-        // Add touch feedback for mobile
-        if ('ontouchstart' in window) {
-          document.querySelectorAll('.btn').forEach(btn => {
-            btn.addEventListener('touchstart', function() {
-              this.style.transform = 'scale(0.98)';
-            });
             
-            btn.addEventListener('touchend', function() {
-              this.style.transform = '';
+            // Update login button text when user is logged in
+            window.netlifyIdentity.on('init', function(user){
+                const loginBtn = document.querySelector('.btn-primary');
+                
+                if (user) {
+                    loginBtn.innerHTML = '<i class="fas fa-user"></i> مرحباً ' + (user.user_metadata.full_name || 'المستخدم');
+                    loginBtn.onclick = function() {
+                        window.netlifyIdentity.logout();
+                    };
+                    
+                    // If user is logged in, show CMS and hide welcome sections
+                    showCMS();
+                } else {
+                    loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> تسجيل الدخول';
+                    loginBtn.onclick = function() {
+                        window.netlifyIdentity.open();
+                    };
+                    window.netlifyIdentity.on('login', function(){
+                        location.replace('/admin/');
+                    });
+                }
             });
-          });
-        }
-      })();
+
+            // Function to show CMS and hide welcome sections
+            function showCMS() {
+                const welcomeSection = document.querySelector('.welcome-section');
+                const mobileTips = document.querySelector('.mobile-tips');
+                const cmsSection = document.querySelector('.cms-section');
+                const cmsLoading = document.getElementById('cmsLoading');
+                
+                if (welcomeSection) welcomeSection.style.display = 'none';
+                if (mobileTips) mobileTips.style.display = 'none';
+                if (cmsSection) cmsSection.style.display = 'block';
+                
+                // Hide loading spinner
+                if (cmsLoading) cmsLoading.style.display = 'none';
+                
+                // Initialize Decap CMS
+                setTimeout(function() {
+                    if (window.DecapCMS) {
+                        try {
+                            window.DecapCMS.init();
+                        } catch(e) {
+                            console.log('CMS already initialized');
+                        }
+                    }
+                }, 500);
+            }
+
+            // Hide loading spinner when CMS is ready
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    const loading = document.getElementById('cmsLoading');
+                    if (loading) {
+                        loading.style.display = 'none';
+                    }
+                }, 2000);
+            });
+
+            // Add touch feedback for mobile
+            if ('ontouchstart' in window) {
+                document.querySelectorAll('.btn').forEach(btn => {
+                    btn.addEventListener('touchstart', function() {
+                        this.style.transform = 'scale(0.98)';
+                    });
+                    
+                    btn.addEventListener('touchend', function() {
+                        this.style.transform = '';
+                    });
+                });
+            }
+        })();
     </script>
 </body>
 </html>
