@@ -12,6 +12,14 @@ publish_mode: editorial_workflow
 site_url: "/"
 logo_url: "/assets/images/logo.png"
 
+# Mobile-friendly admin settings
+display_url: "/"
+site_domain: "/"
+
+# Mobile-optimized interface
+locale: "ar"
+
+# Mobile-friendly collection settings
 collections:
   - name: "site"
     label: "إعدادات الموقع"
@@ -72,4 +80,34 @@ collections:
             widget: "object"
             fields:
               - { label: "العنوان", name: "address", widget: "string" }
+
+# Mobile-optimized media handling
+media_library:
+  name: netlify
+  config:
+    use_transforms: true
+    responsive: true
+    breakpoints: [400, 600, 800, 1200, 1600]
+
+# Mobile-friendly editor settings
+editor:
+  preview: false
+  frame: false
+
+# Mobile-optimized widgets
+widgets:
+  - name: string
+    config:
+      size: 20
+  - name: text
+    config:
+      size: 10
+  - name: image
+    config:
+      default: false
+      allow_multiple: false
+      choose_url: false
+      media_library:
+        config:
+          multiple: false
 

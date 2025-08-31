@@ -7,6 +7,10 @@
   "background_color": "#0f1115",
   "theme_color": "#22c55e",
   "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "ar",
+  "dir": "rtl",
+  "categories": ["business", "home", "services"],
   "icons": [
     {
       "src": "/assets/images/logo.png",
@@ -19,10 +23,71 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/images/logo.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/images/logo.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/images/logo.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/images/logo.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/images/logo.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/images/logo.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any"
     }
   ],
-  "categories": ["business", "home", "services"],
-  "lang": "ar",
-  "dir": "rtl"
+  "shortcuts": [
+    {
+      "name": "لوحة التحكم",
+      "short_name": "التحكم",
+      "description": "الوصول السريع إلى لوحة التحكم",
+      "url": "/admin",
+      "icons": [
+        {
+          "src": "/assets/images/logo.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/images/logo.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/assets/images/logo.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ]
 }
 

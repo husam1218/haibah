@@ -727,6 +727,100 @@ body {
   color: var(--primary-ink);
 }
 
+/* Admin Page Mobile Compatibility */
+.admin-page {
+  /* Ensure admin page styles don't conflict with main site */
+  font-family: 'Cairo', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* Mobile Admin Form Enhancements */
+@media (max-width: 768px) {
+  .admin-page .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .admin-page input,
+  .admin-page textarea,
+  .admin-page select {
+    font-size: 16px !important; /* Prevents iOS zoom */
+    min-height: 48px;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+    background: var(--bg-card);
+    color: var(--text-primary);
+  }
+  
+  .admin-page .btn {
+    min-height: 48px;
+    min-width: 48px;
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 8px;
+  }
+  
+  .admin-page .field-label {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+  
+  .admin-page .field-description {
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    color: var(--text-secondary);
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-page input,
+  .admin-page textarea,
+  .admin-page select {
+    min-height: 52px;
+    padding: 1rem;
+  }
+  
+  .admin-page .btn {
+    min-height: 52px;
+    padding: 1rem 1.5rem;
+  }
+}
+
+/* Touch-friendly admin elements */
+@media (hover: none) and (pointer: coarse) {
+  .admin-page .btn,
+  .admin-page input,
+  .admin-page textarea,
+  .admin-page select {
+    min-height: 48px;
+  }
+  
+  .admin-page .collection-list-item {
+    min-height: 48px;
+    padding: 1rem;
+  }
+}
+
+/* Admin page dark mode compatibility */
+@media (prefers-color-scheme: dark) {
+  .admin-page input,
+  .admin-page textarea,
+  .admin-page select {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border-color: var(--border-light);
+  }
+  
+  .admin-page .field-label {
+    color: var(--text-primary);
+  }
+  
+  .admin-page .field-description {
+    color: var(--text-secondary);
+  }
+}
+
 /* Mobile-specific scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;

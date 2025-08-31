@@ -384,7 +384,14 @@
         margin-bottom: 0.5rem;
       }
 
-      /* Responsive Design */
+      /* Netlify CMS Mobile Styles */
+      .cms-section .netlify-cms {
+        width: 100%;
+        height: 100%;
+        min-height: 500px;
+      }
+
+      /* Mobile-First Responsive Design */
       @media (max-width: 768px) {
         .header-container {
           padding: 1rem;
@@ -412,6 +419,7 @@
           padding: 1.5rem;
           margin: 0 -1rem;
           border-radius: 0;
+          min-height: 500px;
         }
 
         .cms-header {
@@ -423,6 +431,71 @@
         .mobile-tips {
           margin: 0 -1rem;
           border-radius: 0;
+        }
+
+        .welcome-features {
+          grid-template-columns: 1fr;
+          gap: 0.75rem;
+        }
+
+        .feature-item {
+          padding: 0.875rem;
+        }
+
+        .tips-list {
+          gap: 0.5rem;
+        }
+
+        .tips-item {
+          padding: 0.875rem;
+        }
+
+        /* Mobile CMS Styles */
+        .cms-container {
+          min-height: 350px;
+          margin: 0 -1rem;
+          border-radius: 0;
+        }
+
+        /* Mobile Form Styles */
+        .netlify-cms input,
+        .netlify-cms textarea,
+        .netlify-cms select {
+          font-size: 16px !important; /* Prevents zoom on iOS */
+          min-height: 48px !important;
+          padding: 0.75rem !important;
+          border-radius: 8px !important;
+        }
+
+        .netlify-cms .field {
+          margin-bottom: 1.5rem !important;
+        }
+
+        .netlify-cms .field-label {
+          font-size: 1rem !important;
+          margin-bottom: 0.5rem !important;
+          font-weight: 600 !important;
+        }
+
+        .netlify-cms .field-description {
+          font-size: 0.875rem !important;
+          margin-top: 0.25rem !important;
+        }
+
+        .netlify-cms .btn {
+          min-height: 48px !important;
+          padding: 0.875rem 1.5rem !important;
+          font-size: 1rem !important;
+          border-radius: 8px !important;
+        }
+
+        .netlify-cms .collection-list {
+          gap: 1rem !important;
+        }
+
+        .netlify-cms .collection-list-item {
+          padding: 1rem !important;
+          border-radius: 8px !important;
         }
       }
 
@@ -464,16 +537,100 @@
         .cms-section {
           padding: 1.25rem;
         }
+
+        .cms-container {
+          min-height: 300px;
+        }
+
+        .welcome-features {
+          gap: 0.5rem;
+        }
+
+        .feature-item {
+          padding: 0.75rem;
+        }
+
+        .feature-icon {
+          width: 36px;
+          height: 36px;
+          font-size: 1rem;
+        }
+
+        .tips-item {
+          padding: 0.75rem;
+        }
+
+        .tips-icon {
+          width: 36px;
+          height: 36px;
+          font-size: 1rem;
+        }
+
+        /* Extra Small Mobile CMS Styles */
+        .netlify-cms input,
+        .netlify-cms textarea,
+        .netlify-cms select {
+          font-size: 16px !important;
+          min-height: 52px !important;
+          padding: 1rem !important;
+        }
+
+        .netlify-cms .btn {
+          min-height: 52px !important;
+          padding: 1rem 1.5rem !important;
+          font-size: 1rem !important;
+        }
+
+        .netlify-cms .collection-list-item {
+          padding: 1.25rem !important;
+        }
       }
 
       /* Touch Optimizations */
       @media (hover: none) and (pointer: coarse) {
         .btn {
           min-height: 48px;
+          min-width: 48px;
         }
 
         .feature-item, .tips-item {
           padding: 1rem;
+        }
+
+        /* Touch-friendly CMS elements */
+        .netlify-cms .btn {
+          min-height: 48px !important;
+          min-width: 48px !important;
+        }
+
+        .netlify-cms input,
+        .netlify-cms textarea,
+        .netlify-cms select {
+          min-height: 48px !important;
+        }
+
+        .netlify-cms .collection-list-item {
+          min-height: 48px !important;
+        }
+      }
+
+      /* Landscape Mobile Orientation */
+      @media (max-width: 768px) and (orientation: landscape) {
+        .header-container {
+          flex-direction: row;
+          padding: 0.75rem 1rem;
+        }
+
+        .main {
+          padding: 1rem;
+        }
+
+        .cms-section {
+          min-height: 400px;
+        }
+
+        .cms-container {
+          min-height: 300px;
         }
       }
 
@@ -489,6 +646,64 @@
           
           --border-light: #334155;
           --border-medium: #475569;
+        }
+      }
+
+      /* High DPI Mobile Devices */
+      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        .brand-logo,
+        .feature-icon,
+        .tips-icon {
+          image-rendering: -webkit-optimize-contrast;
+          image-rendering: crisp-edges;
+        }
+      }
+
+      /* Mobile Accessibility Improvements */
+      .btn:focus,
+      .feature-item:focus,
+      .tips-item:focus {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+      }
+
+      /* Mobile-specific hover states */
+      @media (hover: hover) and (pointer: fine) {
+        .btn:hover {
+          transform: translateY(-1px);
+        }
+
+        .feature-item:hover,
+        .tips-item:hover {
+          transform: translateY(-1px);
+          box-shadow: var(--shadow-md);
+        }
+      }
+
+      /* Mobile-specific active states */
+      .btn:active,
+      .feature-item:active,
+      .tips-item:active {
+        transform: scale(0.98);
+      }
+
+      /* Mobile-specific selection styles */
+      ::selection {
+        background: var(--primary);
+        color: white;
+      }
+
+      ::-moz-selection {
+        background: var(--primary);
+        color: white;
+      }
+
+      /* Mobile Performance Optimizations */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
         }
       }
     </style>
@@ -683,6 +898,31 @@
                     });
                 });
             }
+
+            // Mobile-specific CMS enhancements
+            function enhanceCMSForMobile() {
+                // Wait for CMS to be fully loaded
+                setTimeout(() => {
+                    const cmsElements = document.querySelectorAll('.netlify-cms input, .netlify-cms textarea, .netlify-cms select, .netlify-cms .btn');
+                    
+                    cmsElements.forEach(element => {
+                        // Ensure proper mobile sizing
+                        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA' || element.tagName === 'SELECT') {
+                            element.style.fontSize = '16px';
+                            element.style.minHeight = '48px';
+                            element.style.padding = '0.75rem';
+                        }
+                        
+                        if (element.classList.contains('btn')) {
+                            element.style.minHeight = '48px';
+                            element.style.minWidth = '48px';
+                        }
+                    });
+                }, 1000);
+            }
+
+            // Call mobile enhancement when CMS is ready
+            window.addEventListener('load', enhanceCMSForMobile);
         })();
     </script>
 </body>

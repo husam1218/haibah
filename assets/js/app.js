@@ -256,3 +256,198 @@ if ('serviceWorker' in navigator) {
   });
 }
 
+// Admin Page Mobile Enhancements
+function initAdminMobileFeatures() {
+  // Check if we're on the admin page
+  if (window.location.pathname.includes('/admin')) {
+    // Mobile-specific admin optimizations
+    enhanceAdminForms();
+    enhanceCMSElements();
+    addMobileAdminNavigation();
+  }
+}
+
+// Enhance admin forms for mobile
+function enhanceAdminForms() {
+  const forms = document.querySelectorAll('form');
+  forms.forEach(form => {
+    // Add mobile-friendly classes
+    form.classList.add('admin-page');
+    
+    // Enhance form inputs
+    const inputs = form.querySelectorAll('input, textarea, select');
+    inputs.forEach(input => {
+      // Ensure proper mobile sizing
+      if (input.type !== 'checkbox' && input.type !== 'radio') {
+        input.style.fontSize = '16px';
+        input.style.minHeight = '48px';
+        input.style.padding = '0.75rem';
+      }
+      
+      // Add touch-friendly interactions
+      if ('ontouchstart' in window) {
+        input.addEventListener('touchstart', function() {
+          this.style.transform = 'scale(0.98)';
+        });
+        
+        input.addEventListener('touchend', function() {
+          this.style.transform = '';
+        });
+      }
+    });
+    
+    // Enhance form buttons
+    const buttons = form.querySelectorAll('button, .btn');
+    buttons.forEach(btn => {
+      btn.style.minHeight = '48px';
+      btn.style.minWidth = '48px';
+      btn.style.padding = '0.875rem 1.5rem';
+      btn.style.fontSize = '1rem';
+      btn.style.borderRadius = '8px';
+    });
+  });
+}
+
+// Enhance CMS elements for mobile
+function enhanceCMSElements() {
+  // Wait for CMS to be fully loaded
+  setTimeout(() => {
+    const cmsElements = document.querySelectorAll('.netlify-cms, .decap-cms');
+    
+    cmsElements.forEach(cms => {
+      cms.classList.add('admin-page');
+      
+      // Enhance CMS inputs
+      const inputs = cms.querySelectorAll('input, textarea, select');
+      inputs.forEach(input => {
+        if (input.type !== 'checkbox' && input.type !== 'radio') {
+          input.style.fontSize = '16px';
+          input.style.minHeight = '48px';
+          input.style.padding = '0.75rem';
+          input.style.borderRadius = '8px';
+        }
+      });
+      
+      // Enhance CMS buttons
+      const buttons = cms.querySelectorAll('button, .btn');
+      buttons.forEach(btn => {
+        btn.style.minHeight = '48px';
+        btn.style.minWidth = '48px';
+        btn.style.padding = '0.875rem 1.5rem';
+        btn.style.fontSize = '1rem';
+        btn.style.borderRadius = '8px';
+      });
+      
+      // Enhance CMS fields
+      const fields = cms.querySelectorAll('.field');
+      fields.forEach(field => {
+        field.style.marginBottom = '1.5rem';
+      });
+      
+      // Enhance CMS labels
+      const labels = cms.querySelectorAll('.field-label');
+      labels.forEach(label => {
+        label.style.fontSize = '1rem';
+        label.style.fontWeight = '600';
+        label.style.marginBottom = '0.5rem';
+      });
+      
+      // Enhance CMS descriptions
+      const descriptions = cms.querySelectorAll('.field-description');
+      descriptions.forEach(desc => {
+        desc.style.fontSize = '0.875rem';
+        desc.style.marginTop = '0.25rem';
+      });
+    });
+  }, 1500);
+}
+
+// Add mobile admin navigation enhancements
+function addMobileAdminNavigation() {
+  // Add mobile-friendly navigation
+  const header = document.querySelector('.header');
+  if (header) {
+    // Make header more mobile-friendly
+    header.style.position = 'sticky';
+    header.style.top = '0';
+    header.style.zIndex = '1000';
+    
+    // Add mobile scroll behavior
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (window.innerWidth <= 768) {
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+          header.style.transform = 'translateY(-100%)';
+        } else {
+          header.style.transform = 'translateY(0)';
+        }
+      }
+      
+      lastScrollTop = scrollTop;
+    });
+    
+    header.style.transition = 'transform 0.3s ease-in-out';
+  }
+  
+  // Add mobile-friendly back to top button
+  const backToTop = document.createElement('button');
+  backToTop.innerHTML = '<i class="fas fa-arrow-up"></i>';
+  backToTop.style.cssText = `
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    display: none;
+  `;
+  
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  
+  // Show/hide back to top button
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+      backToTop.style.display = 'block';
+    } else {
+      backToTop.style.display = 'none';
+    }
+  });
+  
+  document.body.appendChild(backToTop);
+}
+
+// Initialize admin mobile features
+document.addEventListener('DOMContentLoaded', () => {
+  loadContent();
+  initMobileFeatures();
+  initAdminMobileFeatures();
+});
+
+// Handle admin page orientation changes
+window.addEventListener('orientationchange', () => {
+  if (window.location.pathname.includes('/admin')) {
+    setTimeout(() => {
+      // Recalculate admin layout
+      enhanceAdminForms();
+      enhanceCMSElements();
+      
+      // Reset header position
+      const header = document.querySelector('.header');
+      if (header) {
+        header.style.transform = 'translateY(0)';
+      }
+    }, 200);
+  }
+});
+
