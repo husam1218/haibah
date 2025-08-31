@@ -73,6 +73,7 @@
         top: 0;
         z-index: 1000;
         box-shadow: var(--shadow-sm);
+        transition: transform 0.3s ease-in-out;
       }
 
       .header-container {
@@ -391,7 +392,93 @@
         min-height: 500px;
       }
 
-      /* Mobile-First Responsive Design */
+      /* Ensure CMS buttons are visible */
+      .netlify-cms .cms-btn,
+      .netlify-cms .cms-btn-primary,
+      .netlify-cms .cms-btn-secondary,
+      .netlify-cms .cms-btn-success,
+      .netlify-cms .cms-btn-danger,
+      .netlify-cms .cms-btn-warning,
+      .netlify-cms .cms-btn-info,
+      .netlify-cms .cms-btn-light,
+      .netlify-cms .cms-btn-dark,
+      .netlify-cms .cms-btn-link,
+      .netlify-cms .cms-btn-outline-primary,
+      .netlify-cms .cms-btn-outline-secondary,
+      .netlify-cms .cms-btn-outline-success,
+      .netlify-cms .cms-btn-outline-danger,
+      .netlify-cms .cms-btn-outline-warning,
+      .netlify-cms .cms-btn-outline-info,
+      .netlify-cms .cms-btn-outline-light,
+      .netlify-cms .cms-btn-outline-dark,
+      .netlify-cms .cms-btn-outline-link,
+      .netlify-cms .cms-btn-group,
+      .netlify-cms .cms-btn-toolbar,
+      .netlify-cms .cms-btn-group-vertical,
+      .netlify-cms .cms-btn-group-lg,
+      .netlify-cms .cms-btn-group-sm,
+      .netlify-cms .cms-btn-group-xs,
+      .netlify-cms .cms-btn-group-justified,
+      .netlify-cms .cms-btn-group-vertical > .cms-btn-group:after,
+      .netlify-cms .cms-btn-group-vertical > .cms-btn-group:before,
+      .netlify-cms .cms-btn-group-vertical > .cms-btn-group > .cms-btn {
+        display: inline-block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 100 !important;
+      }
+
+      /* Ensure publish workflow buttons are visible */
+      .netlify-cms .cms-workflow-button,
+      .netlify-cms .cms-workflow-button-primary,
+      .netlify-cms .cms-workflow-button-secondary,
+      .netlify-cms .cms-workflow-button-success,
+      .netlify-cms .cms-workflow-button-danger,
+      .netlify-cms .cms-workflow-button-warning,
+      .netlify-cms .cms-workflow-button-info,
+      .netlify-cms .cms-workflow-button-light,
+      .netlify-cms .cms-workflow-button-dark,
+      .netlify-cms .cms-workflow-button-link {
+        display: inline-block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 100 !important;
+      }
+
+      /* Ensure all CMS buttons are visible and properly styled */
+      .netlify-cms button,
+      .netlify-cms .btn,
+      .netlify-cms input[type="submit"],
+      .netlify-cms input[type="button"] {
+        display: inline-block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 100 !important;
+        min-height: 48px !important;
+        min-width: 48px !important;
+        padding: 0.75rem 1.5rem !important;
+        font-size: 1rem !important;
+        border-radius: 8px !important;
+        border: 1px solid var(--border-light) !important;
+        background: var(--primary) !important;
+        color: white !important;
+        cursor: pointer !important;
+        transition: all 0.2s ease !important;
+      }
+
+      .netlify-cms button:hover,
+      .netlify-cms .btn:hover,
+      .netlify-cms input[type="submit"]:hover,
+      .netlify-cms input[type="button"]:hover {
+        background: var(--primary-dark) !important;
+        transform: translateY(-1px) !important;
+        box-shadow: var(--shadow-md) !important;
+      }
+
+      /* Responsive Design */
       @media (max-width: 768px) {
         .header-container {
           padding: 1rem;
@@ -497,6 +584,21 @@
           padding: 1rem !important;
           border-radius: 8px !important;
         }
+
+        /* Ensure CMS buttons are visible on mobile */
+        .netlify-cms button,
+        .netlify-cms .btn,
+        .netlify-cms input[type="submit"],
+        .netlify-cms input[type="button"] {
+          display: inline-block !important;
+          visibility: visible !important;
+          opacity: 1 !important;
+          min-height: 48px !important;
+          min-width: 48px !important;
+          padding: 0.875rem 1.5rem !important;
+          font-size: 1rem !important;
+          border-radius: 8px !important;
+        }
       }
 
       @media (max-width: 480px) {
@@ -537,100 +639,16 @@
         .cms-section {
           padding: 1.25rem;
         }
-
-        .cms-container {
-          min-height: 300px;
-        }
-
-        .welcome-features {
-          gap: 0.5rem;
-        }
-
-        .feature-item {
-          padding: 0.75rem;
-        }
-
-        .feature-icon {
-          width: 36px;
-          height: 36px;
-          font-size: 1rem;
-        }
-
-        .tips-item {
-          padding: 0.75rem;
-        }
-
-        .tips-icon {
-          width: 36px;
-          height: 36px;
-          font-size: 1rem;
-        }
-
-        /* Extra Small Mobile CMS Styles */
-        .netlify-cms input,
-        .netlify-cms textarea,
-        .netlify-cms select {
-          font-size: 16px !important;
-          min-height: 52px !important;
-          padding: 1rem !important;
-        }
-
-        .netlify-cms .btn {
-          min-height: 52px !important;
-          padding: 1rem 1.5rem !important;
-          font-size: 1rem !important;
-        }
-
-        .netlify-cms .collection-list-item {
-          padding: 1.25rem !important;
-        }
       }
 
       /* Touch Optimizations */
       @media (hover: none) and (pointer: coarse) {
         .btn {
           min-height: 48px;
-          min-width: 48px;
         }
 
         .feature-item, .tips-item {
           padding: 1rem;
-        }
-
-        /* Touch-friendly CMS elements */
-        .netlify-cms .btn {
-          min-height: 48px !important;
-          min-width: 48px !important;
-        }
-
-        .netlify-cms input,
-        .netlify-cms textarea,
-        .netlify-cms select {
-          min-height: 48px !important;
-        }
-
-        .netlify-cms .collection-list-item {
-          min-height: 48px !important;
-        }
-      }
-
-      /* Landscape Mobile Orientation */
-      @media (max-width: 768px) and (orientation: landscape) {
-        .header-container {
-          flex-direction: row;
-          padding: 0.75rem 1rem;
-        }
-
-        .main {
-          padding: 1rem;
-        }
-
-        .cms-section {
-          min-height: 400px;
-        }
-
-        .cms-container {
-          min-height: 300px;
         }
       }
 
@@ -646,37 +664,6 @@
           
           --border-light: #334155;
           --border-medium: #475569;
-        }
-      }
-
-      /* High DPI Mobile Devices */
-      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-        .brand-logo,
-        .feature-icon,
-        .tips-icon {
-          image-rendering: -webkit-optimize-contrast;
-          image-rendering: crisp-edges;
-        }
-      }
-
-      /* Mobile Accessibility Improvements */
-      .btn:focus,
-      .feature-item:focus,
-      .tips-item:focus {
-        outline: 2px solid var(--primary);
-        outline-offset: 2px;
-      }
-
-      /* Mobile-specific hover states */
-      @media (hover: hover) and (pointer: fine) {
-        .btn:hover {
-          transform: translateY(-1px);
-        }
-
-        .feature-item:hover,
-        .tips-item:hover {
-          transform: translateY(-1px);
-          box-shadow: var(--shadow-md);
         }
       }
 
@@ -706,10 +693,24 @@
           transition-duration: 0.01ms !important;
         }
       }
+
+      /* Header auto-hide on scroll */
+      .header-hidden {
+        transform: translateY(-100%);
+      }
+
+      /* Ensure CMS content is not blocked by header */
+      .cms-section {
+        margin-top: 1rem;
+      }
+
+      .netlify-cms {
+        padding-top: 1rem;
+      }
     </style>
 </head>
 <body>
-    <header class="header">
+    <header class="header" id="adminHeader">
         <div class="header-container">
             <div class="header-brand">
                 <div class="brand-logo">
@@ -899,6 +900,33 @@
                 });
             }
 
+            // Header auto-hide on scroll to prevent blocking CMS fields
+            function initHeaderAutoHide() {
+                const header = document.getElementById('adminHeader');
+                let lastScrollTop = 0;
+                let scrollThreshold = 100;
+                
+                window.addEventListener('scroll', () => {
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    // Auto-hide header when scrolling down, show when scrolling up
+                    if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+                        header.classList.add('header-hidden');
+                    } else if (scrollTop < lastScrollTop || scrollTop <= scrollThreshold) {
+                        header.classList.remove('header-hidden');
+                    }
+                    
+                    lastScrollTop = scrollTop;
+                });
+
+                // Show header when user reaches top
+                window.addEventListener('scroll', () => {
+                    if (window.pageYOffset === 0) {
+                        header.classList.remove('header-hidden');
+                    }
+                });
+            }
+
             // Mobile-specific CMS enhancements
             function enhanceCMSForMobile() {
                 // Wait for CMS to be fully loaded
@@ -918,11 +946,36 @@
                             element.style.minWidth = '48px';
                         }
                     });
+
+                    // Ensure CMS buttons are visible
+                    const cmsButtons = document.querySelectorAll('.netlify-cms button, .netlify-cms .btn, .netlify-cms input[type="submit"], .netlify-cms input[type="button"]');
+                    cmsButtons.forEach(btn => {
+                        btn.style.display = 'inline-block';
+                        btn.style.visibility = 'visible';
+                        btn.style.opacity = '1';
+                        btn.style.position = 'relative';
+                        btn.style.zIndex = '100';
+                        btn.style.minHeight = '48px';
+                        btn.style.minWidth = '48px';
+                        btn.style.padding = '0.75rem 1.5rem';
+                        btn.style.fontSize = '1rem';
+                        btn.style.borderRadius = '8px';
+                        btn.style.border = '1px solid var(--border-light)';
+                        btn.style.background = 'var(--primary)';
+                        btn.style.color = 'white';
+                        btn.style.cursor = 'pointer';
+                    });
                 }, 1000);
             }
 
             // Call mobile enhancement when CMS is ready
-            window.addEventListener('load', enhanceCMSForMobile);
+            window.addEventListener('load', () => {
+                enhanceCMSForMobile();
+                initHeaderAutoHide();
+            });
+
+            // Initialize header auto-hide
+            initHeaderAutoHide();
         })();
     </script>
 </body>

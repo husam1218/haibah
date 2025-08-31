@@ -727,100 +727,6 @@ body {
   color: var(--primary-ink);
 }
 
-/* Admin Page Mobile Compatibility */
-.admin-page {
-  /* Ensure admin page styles don't conflict with main site */
-  font-family: 'Cairo', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-}
-
-/* Mobile Admin Form Enhancements */
-@media (max-width: 768px) {
-  .admin-page .form-group {
-    margin-bottom: 1.5rem;
-  }
-  
-  .admin-page input,
-  .admin-page textarea,
-  .admin-page select {
-    font-size: 16px !important; /* Prevents iOS zoom */
-    min-height: 48px;
-    padding: 0.75rem;
-    border-radius: 8px;
-    border: 1px solid var(--border-light);
-    background: var(--bg-card);
-    color: var(--text-primary);
-  }
-  
-  .admin-page .btn {
-    min-height: 48px;
-    min-width: 48px;
-    padding: 0.875rem 1.5rem;
-    font-size: 1rem;
-    border-radius: 8px;
-  }
-  
-  .admin-page .field-label {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: var(--text-primary);
-  }
-  
-  .admin-page .field-description {
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-    color: var(--text-secondary);
-  }
-}
-
-@media (max-width: 480px) {
-  .admin-page input,
-  .admin-page textarea,
-  .admin-page select {
-    min-height: 52px;
-    padding: 1rem;
-  }
-  
-  .admin-page .btn {
-    min-height: 52px;
-    padding: 1rem 1.5rem;
-  }
-}
-
-/* Touch-friendly admin elements */
-@media (hover: none) and (pointer: coarse) {
-  .admin-page .btn,
-  .admin-page input,
-  .admin-page textarea,
-  .admin-page select {
-    min-height: 48px;
-  }
-  
-  .admin-page .collection-list-item {
-    min-height: 48px;
-    padding: 1rem;
-  }
-}
-
-/* Admin page dark mode compatibility */
-@media (prefers-color-scheme: dark) {
-  .admin-page input,
-  .admin-page textarea,
-  .admin-page select {
-    background: var(--bg-card);
-    color: var(--text-primary);
-    border-color: var(--border-light);
-  }
-  
-  .admin-page .field-label {
-    color: var(--text-primary);
-  }
-  
-  .admin-page .field-description {
-    color: var(--text-secondary);
-  }
-}
-
 /* Mobile-specific scrollbar styling */
 ::-webkit-scrollbar {
   width: 8px;
@@ -857,6 +763,174 @@ body {
   .gallery-grid .item {
     border: 1px solid #ccc;
     break-inside: avoid;
+  }
+}
+
+/* Admin page dark mode compatibility */
+@media (prefers-color-scheme: dark) {
+  .admin-page input,
+  .admin-page textarea,
+  .admin-page select {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border-color: var(--border-light);
+  }
+  
+  .admin-page .field-label {
+    color: var(--text-primary);
+  }
+  
+  .admin-page .field-description {
+    color: var(--text-secondary);
+  }
+}
+
+/* Netlify CMS Button Visibility Fixes */
+.netlify-cms button,
+.netlify-cms .btn,
+.netlify-cms input[type="submit"],
+.netlify-cms input[type="button"],
+.netlify-cms .cms-btn,
+.netlify-cms .cms-btn-primary,
+.netlify-cms .cms-btn-secondary,
+.netlify-cms .cms-btn-success,
+.netlify-cms .cms-btn-danger,
+.netlify-cms .cms-btn-warning,
+.netlify-cms .cms-btn-info,
+.netlify-cms .cms-btn-light,
+.netlify-cms .cms-btn-dark,
+.netlify-cms .cms-btn-link {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 100 !important;
+  min-height: 48px !important;
+  min-width: 48px !important;
+  padding: 0.75rem 1.5rem !important;
+  font-size: 1rem !important;
+  border-radius: 8px !important;
+  border: 1px solid #e2e8f0 !important;
+  background: #6366f1 !important;
+  color: white !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  margin: 0.25rem !important;
+}
+
+.netlify-cms button:hover,
+.netlify-cms .btn:hover,
+.netlify-cms input[type="submit"]:hover,
+.netlify-cms input[type="button"]:hover,
+.netlify-cms .cms-btn:hover,
+.netlify-cms .cms-btn-primary:hover,
+.netlify-cms .cms-btn-secondary:hover,
+.netlify-cms .cms-btn-success:hover,
+.netlify-cms .cms-btn-danger:hover,
+.netlify-cms .cms-btn-warning:hover,
+.netlify-cms .cms-btn-info:hover,
+.netlify-cms .cms-btn-light:hover,
+.netlify-cms .cms-btn-dark:hover,
+.netlify-cms .cms-btn-link:hover {
+  background: #4f46e5 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* CMS Workflow Buttons */
+.netlify-cms .cms-workflow-button,
+.netlify-cms .cms-workflow-button-primary,
+.netlify-cms .cms-workflow-button-secondary,
+.netlify-cms .cms-workflow-button-success,
+.netlify-cms .cms-workflow-button-danger,
+.netlify-cms .cms-workflow-button-warning,
+.netlify-cms .cms-workflow-button-info,
+.netlify-cms .cms-workflow-button-light,
+.netlify-cms .cms-workflow-button-dark,
+.netlify-cms .cms-workflow-button-link {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 100 !important;
+  min-height: 48px !important;
+  min-width: 48px !important;
+  padding: 0.75rem 1.5rem !important;
+  font-size: 1rem !important;
+  border-radius: 8px !important;
+  border: 1px solid #e2e8f0 !important;
+  background: #10b981 !important;
+  color: white !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  margin: 0.25rem !important;
+}
+
+/* CMS Form Fields */
+.netlify-cms .field {
+  margin-bottom: 1.5rem !important;
+}
+
+.netlify-cms .field-label {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 0.5rem !important;
+  color: #1e293b !important;
+}
+
+.netlify-cms .field-description {
+  font-size: 0.875rem !important;
+  margin-top: 0.25rem !important;
+  color: #64748b !important;
+}
+
+/* CMS Inputs */
+.netlify-cms input,
+.netlify-cms textarea,
+.netlify-cms select {
+  font-size: 16px !important;
+  min-height: 48px !important;
+  padding: 0.75rem !important;
+  border-radius: 8px !important;
+  border: 1px solid #e2e8f0 !important;
+  background: white !important;
+  color: #1e293b !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Mobile-specific CMS styles */
+@media (max-width: 768px) {
+  .netlify-cms button,
+  .netlify-cms .btn,
+  .netlify-cms input[type="submit"],
+  .netlify-cms input[type="button"],
+  .netlify-cms .cms-btn,
+  .netlify-cms .cms-btn-primary,
+  .netlify-cms .cms-btn-secondary,
+  .netlify-cms .cms-btn-success,
+  .netlify-cms .cms-btn-danger,
+  .netlify-cms .cms-btn-warning,
+  .netlify-cms .cms-btn-info,
+  .netlify-cms .cms-btn-light,
+  .netlify-cms .cms-btn-dark,
+  .netlify-cms .cms-btn-link {
+    min-height: 52px !important;
+    min-width: 52px !important;
+    padding: 1rem 1.5rem !important;
+    font-size: 1rem !important;
+    margin: 0.5rem !important;
+  }
+  
+  .netlify-cms input,
+  .netlify-cms textarea,
+  .netlify-cms select {
+    min-height: 52px !important;
+    padding: 1rem !important;
+  }
+  
+  .netlify-cms .field {
+    margin-bottom: 2rem !important;
   }
 }
 
