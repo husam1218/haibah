@@ -2,147 +2,853 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, viewport-fit=cover" />
-    <title>محلات الهيبة للدهان | الدهانات والطلاء المنزلي</title>
-    <meta name="description" content="محلات الهيبة للدهان - تشطيبات ودهانات منزلية احترافية. قطاع مشاريع تحت إشراف المهندس عبد الله طاهر الحميقاني." />
-    
-    <!-- Mobile-specific meta tags -->
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="الهيبة للدهان" />
-    <meta name="theme-color" content="#22c55e" />
-    <meta name="msapplication-TileColor" content="#22c55e" />
-    
-    <!-- Preconnect for performance -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>لوحة التحكم - محلات الهيبة للدهان</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
-    
-    <!-- Manifest for PWA -->
-    <link rel="manifest" href="/manifest.json" />
-    
-    <!-- Apple touch icons -->
-    <link rel="apple-touch-icon" href="/assets/images/logo.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="/assets/images/logo.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/logo.png" />
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+      :root {
+        --primary: #6366f1;
+        --primary-dark: #4f46e5;
+        --secondary: #10b981;
+        --accent: #f59e0b;
+        --success: #22c55e;
+        --warning: #f97316;
+        --error: #ef4444;
+        
+        --bg-primary: #ffffff;
+        --bg-secondary: #f8fafc;
+        --bg-card: #ffffff;
+        
+        --text-primary: #1e293b;
+        --text-secondary: #64748b;
+        --text-muted: #94a3b8;
+        
+        --border-light: #e2e8f0;
+        --border-medium: #cbd5e1;
+        
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        
+        --radius-lg: 0.75rem;
+        --radius-xl: 1rem;
+        --radius-2xl: 1.5rem;
+        
+        --transition: all 0.2s ease;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+        -webkit-text-size-adjust: 100%;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      body {
+        font-family: 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+        color: var(--text-primary);
+        line-height: 1.6;
+        min-height: 100vh;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* Header Styles */
+      .header {
+        background: var(--bg-card);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border-light);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .header-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .header-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .brand-logo {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        border-radius: var(--radius-lg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+
+      .brand-text h1 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0;
+        line-height: 1.2;
+      }
+
+      .brand-text p {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        margin: 0;
+        line-height: 1.2;
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: var(--radius-lg);
+        font-family: inherit;
+        font-size: 0.875rem;
+        font-weight: 500;
+        text-decoration: none;
+        cursor: pointer;
+        transition: var(--transition);
+        white-space: nowrap;
+        min-height: 44px;
+        min-width: 44px;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        color: white;
+        box-shadow: var(--shadow-md);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      /* Main Content */
+      .main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+      }
+
+      .content-grid {
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: 1fr;
+      }
+
+      /* Welcome Section */
+      .welcome-section {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        border-radius: var(--radius-2xl);
+        padding: 2rem;
+        color: white;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-xl);
+      }
+
+      .welcome-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        opacity: 0.3;
+      }
+
+      .welcome-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .welcome-title {
+        font-size: 1.75rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .welcome-subtitle {
+        font-size: 1rem;
+        opacity: 0.9;
+        margin-bottom: 1.5rem;
+        font-weight: 400;
+      }
+
+      .welcome-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .feature-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-lg);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .feature-icon {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: var(--radius-lg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+      }
+
+      .feature-text {
+        text-align: right;
+        flex: 1;
+      }
+
+      .feature-title {
+        font-weight: 600;
+        font-size: 0.875rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .feature-desc {
+        font-size: 0.75rem;
+        opacity: 0.8;
+      }
+
+      /* Mobile Tips */
+      .mobile-tips {
+        background: linear-gradient(135deg, var(--accent) 0%, #fbbf24 100%);
+        border-radius: var(--radius-2xl);
+        padding: 1.5rem;
+        color: white;
+        box-shadow: var(--shadow-lg);
+      }
+
+      .tips-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+      }
+
+      .tips-icon {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: var(--radius-lg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+      }
+
+      .tips-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      .tips-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      .tips-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-lg);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .tips-item i {
+        color: var(--accent);
+        font-size: 1rem;
+      }
+
+      .tips-text {
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+
+      /* CMS Section */
+      .cms-section {
+        background: var(--bg-card);
+        border-radius: var(--radius-2xl);
+        padding: 2rem;
+        box-shadow: var(--shadow-lg);
+        border: 1px solid var(--border-light);
+        min-height: 600px;
+        position: relative;
+      }
+
+      .cms-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border-light);
+      }
+
+      .cms-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .cms-container {
+        background: var(--bg-secondary);
+        border: 2px dashed var(--border-medium);
+        border-radius: var(--radius-xl);
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cms-loading {
+        text-align: center;
+        color: var(--text-secondary);
+      }
+
+      .loading-spinner {
+        width: 48px;
+        height: 48px;
+        border: 4px solid var(--border-light);
+        border-top: 4px solid var(--primary);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 1rem;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      .loading-text {
+        font-size: 1rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+      }
+
+      /* Ensure CMS content is not blocked by header */
+      .cms-section {
+        margin-top: 1rem;
+        padding-top: 2rem;
+      }
+
+      .netlify-cms {
+        padding-top: 1rem;
+        margin-top: 1rem;
+      }
+
+      /* Force CMS to be visible */
+      .netlify-cms {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 1000 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 500px !important;
+      }
+
+      /* CMS editor */
+      .netlify-cms .cms-editor {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 1000 !important;
+      }
+
+      /* CMS preview */
+      .netlify-cms .cms-preview {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 1000 !important;
+      }
+
+      /* Force all CMS buttons to be visible */
+      .netlify-cms *[class*="btn"],
+      .netlify-cms *[class*="button"],
+      .netlify-cms button,
+      .netlify-cms .btn,
+      .netlify-cms input[type="submit"],
+      .netlify-cms input[type="button"],
+      .cms-section button,
+      .cms-section .btn,
+      .cms-section input[type="submit"],
+      .cms-section input[type="button"],
+      .cms-container button,
+      .cms-container .btn,
+      .cms-container input[type="submit"],
+      .cms-container input[type="button"] {
+        display: inline-block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 1001 !important;
+        min-height: 48px !important;
+        min-width: 48px !important;
+        padding: 0.75rem 1.5rem !important;
+        font-size: 1rem !important;
+        border-radius: 8px !important;
+        border: 1px solid #e2e8f0 !important;
+        background: #6366f1 !important;
+        color: white !important;
+        cursor: pointer !important;
+        margin: 0.25rem !important;
+        font-family: inherit !important;
+        text-decoration: none !important;
+        line-height: 1.5 !important;
+        vertical-align: middle !important;
+        user-select: none !important;
+        white-space: nowrap !important;
+      }
+
+      /* Header auto-hide on scroll */
+      .header {
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .header-hidden {
+        transform: translateY(-100%);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .header-container {
+          padding: 1rem;
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+        }
+
+        .header-actions {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .main {
+          padding: 1rem;
+        }
+
+        .welcome-section {
+          padding: 1.5rem;
+          margin: 0 -1rem;
+          border-radius: 0;
+        }
+
+        .cms-section {
+          padding: 1.5rem;
+          margin: 0 -1rem;
+          border-radius: 0;
+        }
+
+        .cms-header {
+          flex-direction: column;
+          gap: 1rem;
+          align-items: flex-start;
+        }
+
+        .mobile-tips {
+          margin: 0 -1rem;
+          border-radius: 0;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .header-container {
+          padding: 0.75rem;
+        }
+
+        .brand-logo {
+          width: 36px;
+          height: 36px;
+          font-size: 1rem;
+        }
+
+        .brand-text h1 {
+          font-size: 1.125rem;
+        }
+
+        .brand-text p {
+          font-size: 0.75rem;
+        }
+
+        .main {
+          padding: 0.75rem;
+        }
+
+        .welcome-section {
+          padding: 1.25rem;
+        }
+
+        .welcome-title {
+          font-size: 1.5rem;
+        }
+
+        .welcome-subtitle {
+          font-size: 0.875rem;
+        }
+
+        .cms-section {
+          padding: 1.25rem;
+        }
+      }
+
+      /* Touch Optimizations */
+      @media (hover: none) and (pointer: coarse) {
+        .btn {
+          min-height: 48px;
+        }
+
+        .feature-item, .tips-item {
+          padding: 1rem;
+        }
+      }
+
+      /* Dark mode support */
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg-primary: #0f172a;
+          --bg-secondary: #1e293b;
+          --bg-card: #1e293b;
+          
+          --text-primary: #f8fafc;
+          --text-secondary: #cbd5e1;
+          
+          --border-light: #334155;
+          --border-medium: #475569;
+        }
+      }
+    </style>
 </head>
 <body>
-    <header class="site-header">
-        <div class="container header-wrap">
-            <div class="brand">
-                <img id="brandLogo" src="assets/images/logo.png" alt="شعار محلات الهيبة للدهان" onerror="this.style.display='none'" />
+    <header class="header">
+        <div class="header-container">
+            <div class="header-brand">
+                <div class="brand-logo">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
                 <div class="brand-text">
-                    <h1 id="siteTitle">محلات الهيبة للدهان</h1>
-                    <p id="siteTagline" class="muted"></p>
+                    <h1>لوحة التحكم</h1>
+                    <p>محلات الهيبة للدهان</p>
                 </div>
             </div>
-            <nav class="nav">
-                <a href="#about">من نحن</a>
-                <a href="#services">خدماتنا</a>
-                <a href="#projects">أعمالنا</a>
-                <a href="#contact" class="btn btn-primary">تواصل</a>
-            </nav>
+            <div class="header-actions">
+                <button class="btn btn-primary" onclick="window.netlifyIdentity.open()">
+                    <i class="fas fa-sign-in-alt"></i>
+                    تسجيل الدخول
+                </button>
+            </div>
         </div>
     </header>
 
-    <section class="hero" id="hero">
-        <div class="container hero-inner">
-            <div class="hero-content">
-                <h2 id="heroTitle">لمسة جمالية تدوم</h2>
-                <p id="heroSubtitle" class="lead">نقدم حلول الدهان والتشطيب بجودة عالية وخبرة موثوقة.</p>
-                <div class="hero-cta">
-                    <a href="#projects" class="btn btn-dark">شاهد أعمالنا</a>
-                    <a href="#contact" class="btn btn-light">اطلب عرض سعر</a>
+    <main class="main">
+        <div class="content-grid">
+            <section class="welcome-section">
+                <div class="welcome-content">
+                    <h2 class="welcome-title">مرحباً بك في لوحة التحكم</h2>
+                    <p class="welcome-subtitle">إدارة محتوى موقع محلات الهيبة للدهان بسهولة وأمان</p>
+                    
+                    <div class="welcome-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-image"></i>
+                            </div>
+                            <div class="feature-text">
+                                <div class="feature-title">إدارة الصور</div>
+                                <div class="feature-desc">رفع وتنظيم الصور بسهولة</div>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-edit"></i>
+                            </div>
+                            <div class="feature-text">
+                                <div class="feature-title">تعديل المحتوى</div>
+                                <div class="feature-desc">تحديث النصوص والمعلومات</div>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="feature-text">
+                                <div class="feature-title">متوافق مع الهاتف</div>
+                                <div class="feature-desc">استخدم من أي جهاز</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <p class="engineer-note">قطاع المشاريع بإشراف المهندس <strong>عبد الله طاهر الحميقاني</strong></p>
-            </div>
-            <div class="hero-media">
-                <img id="heroImage" src="assets/images/hero.jpg" alt="ديكور ودهانات"/>
-            </div>
+            </section>
+
+            <!-- Mobile Tips Section -->
+            <section class="mobile-tips">
+                <div class="tips-header">
+                    <div class="tips-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="tips-title">نصائح للاستخدام على الهاتف</h3>
+                </div>
+                
+                <ul class="tips-list">
+                    <li class="tips-item">
+                        <i class="fas fa-expand"></i>
+                        <span class="tips-text">استخدم وضع الشاشة الكاملة للحصول على تجربة أفضل</span>
+                    </li>
+                    <li class="tips-item">
+                        <i class="fas fa-rotate"></i>
+                        <span class="tips-text">يمكنك تدوير الهاتف أفقياً لرؤية المزيد من المحتوى</span>
+                    </li>
+                    <li class="tips-item">
+                        <i class="fas fa-search-plus"></i>
+                        <span class="tips-text">استخدم التكبير/التصغير للوصول إلى العناصر الصغيرة</span>
+                    </li>
+                    <li class="tips-item">
+                        <i class="fas fa-save"></i>
+                        <span class="tips-text">احفظ التغييرات بشكل متكرر لتجنب فقدان البيانات</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="cms-section" id="cms">
+                <div class="cms-header">
+                    <h2 class="cms-title">
+                        <i class="fas fa-edit"></i>
+                        محرر المحتوى
+                    </h2>
+                </div>
+                <div class="cms-container">
+                    <div class="cms-loading" id="cmsLoading">
+                        <div class="loading-spinner"></div>
+                        <div class="loading-text">جاري تحميل محرر المحتوى...</div>
+                    </div>
+                </div>
+            </section>
         </div>
-    </section>
-
-    <main>
-        <section id="about" class="section">
-            <div class="container grid-2">
-                <div>
-                    <h3>من نحن</h3>
-                    <p id="aboutText" class="para"></p>
-                    <ul class="bullets" id="aboutBullets"></ul>
-                </div>
-                <div class="card card-accent">
-                    <h4>لماذا نحن؟</h4>
-                    <ul class="checklist" id="whyUs"></ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="services" class="section bg-soft">
-            <div class="container">
-                <h3 class="section-title">خدماتنا</h3>
-                <div id="servicesGrid" class="cards-grid"></div>
-            </div>
-        </section>
-
-        <section id="projects" class="section">
-            <div class="container">
-                <div class="section-head">
-                    <h3 class="section-title">نماذج من أعمالنا</h3>
-                    <p class="muted">عرض لأبرز مشاريع الطلاء والتشطيبات التي نفذناها.</p>
-                </div>
-                <div id="gallery" class="gallery-grid"></div>
-            </div>
-        </section>
-
-        <section id="contact" class="section contact-section bg-dark">
-            <div class="container contact-wrap">
-                <div>
-                    <h3>تواصل معنا</h3>
-                    <p id="contactBlurb" class="para"></p>
-                    <div class="contact-items" id="contactItems"></div>
-                </div>
-                <div class="contact-cta">
-                    <a id="whatsappLink" class="btn btn-primary" target="_blank" rel="noopener">راسلنا واتساب</a>
-                    <a id="phoneLink" class="btn btn-light" target="_blank" rel="noopener">اتصل الآن</a>
-                </div>
-            </div>
-        </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="container footer-wrap">
-            <div>
-                <strong>محلات الهيبة للدهان</strong>
-                <div class="muted small" id="footerAddress"></div>
-            </div>
-            <div class="muted small">© <span id="year"></span> جميع الحقوق محفوظة</div>
-        </div>
-    </footer>
-
-    <!-- Netlify Identity on homepage to handle invite/confirmation links -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <script src="assets/js/app.js"></script>
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script>
-      (function(){
-        if (!window.netlifyIdentity) return;
-        // If arriving via invite/confirmation link, ensure modal opens to finish signup
-        var hasToken = (location.hash && (location.hash.indexOf('invite_token') !== -1 || location.hash.indexOf('confirmation_token') !== -1)) ||
-                       (location.search && (location.search.indexOf('invite_token') !== -1 || location.search.indexOf('confirmation_token') !== -1));
-        window.netlifyIdentity.on('init', function(user){
-          if (!user && hasToken) {
-            try { window.netlifyIdentity.open('signup'); } catch(e) { window.netlifyIdentity.open(); }
-          }
-        });
-        window.netlifyIdentity.on('login', function(){
-          // After finishing signup/login, go to admin
-          location.replace('/admin/');
-        });
-      })();
+        (function(){
+            if (!window.netlifyIdentity) return;
+            
+            // Clear stale session when visiting /admin/?logout
+            if (new URLSearchParams(location.search).has('logout')) {
+                try { window.netlifyIdentity.logout(); } catch(e) {}
+            }
+            
+            // Update login button text when user is logged in
+            window.netlifyIdentity.on('init', function(user){
+                const loginBtn = document.querySelector('.btn-primary');
+                
+                if (user) {
+                    loginBtn.innerHTML = '<i class="fas fa-user"></i> مرحباً ' + (user.user_metadata.full_name || 'المستخدم');
+                    loginBtn.onclick = function() {
+                        window.netlifyIdentity.logout();
+                    };
+                    
+                    // If user is logged in, show CMS and hide welcome sections
+                    showCMS();
+                } else {
+                    loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> تسجيل الدخول';
+                    loginBtn.onclick = function() {
+                        window.netlifyIdentity.open();
+                    };
+                    window.netlifyIdentity.on('login', function(){
+                        location.replace('/admin/');
+                    });
+                }
+            });
+
+            // Function to show CMS and hide welcome sections
+            function showCMS() {
+                const welcomeSection = document.querySelector('.welcome-section');
+                const mobileTips = document.querySelector('.mobile-tips');
+                const cmsSection = document.querySelector('.cms-section');
+                const cmsLoading = document.getElementById('cmsLoading');
+                
+                if (welcomeSection) welcomeSection.style.display = 'none';
+                if (mobileTips) mobileTips.style.display = 'none';
+                if (cmsSection) cmsSection.style.display = 'block';
+                
+                // Hide loading spinner
+                if (cmsLoading) cmsLoading.style.display = 'none';
+                
+                // Initialize Decap CMS
+                setTimeout(function() {
+                    if (window.DecapCMS) {
+                        try {
+                            window.DecapCMS.init();
+                        } catch(e) {
+                            console.log('CMS already initialized');
+                        }
+                    }
+                }, 500);
+            }
+
+            // Hide loading spinner when CMS is ready
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    const loading = document.getElementById('cmsLoading');
+                    if (loading) {
+                        loading.style.display = 'none';
+                    }
+                }, 2000);
+            });
+
+            // Add touch feedback for mobile
+            if ('ontouchstart' in window) {
+                document.querySelectorAll('.btn').forEach(btn => {
+                    btn.addEventListener('touchstart', function() {
+                        this.style.transform = 'scale(0.98)';
+                    });
+                    
+                    btn.addEventListener('touchend', function() {
+                        this.style.transform = '';
+                    });
+                });
+            }
+
+            // Header auto-hide on scroll to prevent blocking CMS fields
+            function initHeaderAutoHide() {
+                const header = document.querySelector('.header');
+                let lastScrollTop = 0;
+                let scrollThreshold = 50; // Reduced threshold for smaller header
+                
+                window.addEventListener('scroll', () => {
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    
+                    // Auto-hide header when scrolling down, show when scrolling up
+                    if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+                        header.classList.add('header-hidden');
+                    } else if (scrollTop < lastScrollTop || scrollTop <= scrollThreshold) {
+                        header.classList.remove('header-hidden');
+                    }
+                    
+                    lastScrollTop = scrollTop;
+                });
+
+                // Show header when user reaches top
+                window.addEventListener('scroll', () => {
+                    if (window.pageYOffset === 0) {
+                        header.classList.remove('header-hidden');
+                    }
+                });
+            }
+
+            // Mobile-specific CMS enhancements
+            function enhanceCMSForMobile() {
+                // Wait for CMS to be fully loaded
+                setTimeout(() => {
+                    const cmsElements = document.querySelectorAll('.netlify-cms input, .netlify-cms textarea, .netlify-cms select, .netlify-cms .btn');
+                    
+                    cmsElements.forEach(element => {
+                        // Ensure proper mobile sizing
+                        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA' || element.tagName === 'SELECT') {
+                            element.style.fontSize = '16px';
+                            element.style.minHeight = '48px';
+                            element.style.padding = '0.75rem';
+                        }
+                        
+                        if (element.classList.contains('btn')) {
+                            element.style.minHeight = '48px';
+                            element.style.minWidth = '48px';
+                        }
+                    });
+
+                    // Ensure CMS buttons are visible
+                    const cmsButtons = document.querySelectorAll('.netlify-cms button, .netlify-cms .btn, .netlify-cms input[type="submit"], .netlify-cms input[type="button"]');
+                    cmsButtons.forEach(btn => {
+                        btn.style.display = 'inline-block';
+                        btn.style.visibility = 'visible';
+                        btn.style.opacity = '1';
+                        btn.style.position = 'relative';
+                        btn.style.zIndex = '1001';
+                        btn.style.minHeight = '48px';
+                        btn.style.minWidth = '48px';
+                        btn.style.padding = '0.75rem 1.5rem';
+                        btn.style.fontSize = '1rem';
+                        btn.style.borderRadius = '8px';
+                        btn.style.border = '1px solid var(--border-light)';
+                        btn.style.background = 'var(--primary)';
+                        btn.style.color = 'white';
+                        btn.style.cursor = 'pointer';
+                    });
+                }, 1000);
+            }
+
+            // Call mobile enhancement when CMS is ready
+            window.addEventListener('load', () => {
+                enhanceCMSForMobile();
+                initHeaderAutoHide();
+            });
+
+            // Initialize header auto-hide
+            initHeaderAutoHide();
+        })();
     </script>
 </body>
 </html>
-
