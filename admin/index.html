@@ -73,7 +73,6 @@
         top: 0;
         z-index: 1000;
         box-shadow: var(--shadow-sm);
-        transition: transform 0.3s ease-in-out;
       }
 
       .header-container {
@@ -385,99 +384,6 @@
         margin-bottom: 0.5rem;
       }
 
-      /* Netlify CMS Mobile Styles */
-      .cms-section .netlify-cms {
-        width: 100%;
-        height: 100%;
-        min-height: 500px;
-      }
-
-      /* Ensure CMS buttons are visible */
-      .netlify-cms .cms-btn,
-      .netlify-cms .cms-btn-primary,
-      .netlify-cms .cms-btn-secondary,
-      .netlify-cms .cms-btn-success,
-      .netlify-cms .cms-btn-danger,
-      .netlify-cms .cms-btn-warning,
-      .netlify-cms .cms-btn-info,
-      .netlify-cms .cms-btn-light,
-      .netlify-cms .cms-btn-dark,
-      .netlify-cms .cms-btn-link,
-      .netlify-cms .cms-btn-outline-primary,
-      .netlify-cms .cms-btn-outline-secondary,
-      .netlify-cms .cms-btn-outline-success,
-      .netlify-cms .cms-btn-outline-danger,
-      .netlify-cms .cms-btn-outline-warning,
-      .netlify-cms .cms-btn-outline-info,
-      .netlify-cms .cms-btn-outline-light,
-      .netlify-cms .cms-btn-outline-dark,
-      .netlify-cms .cms-btn-outline-link,
-      .netlify-cms .cms-btn-group,
-      .netlify-cms .cms-btn-toolbar,
-      .netlify-cms .cms-btn-group-vertical,
-      .netlify-cms .cms-btn-group-lg,
-      .netlify-cms .cms-btn-group-sm,
-      .netlify-cms .cms-btn-group-xs,
-      .netlify-cms .cms-btn-group-justified,
-      .netlify-cms .cms-btn-group-vertical > .cms-btn-group:after,
-      .netlify-cms .cms-btn-group-vertical > .cms-btn-group:before,
-      .netlify-cms .cms-btn-group-vertical > .cms-btn-group > .cms-btn {
-        display: inline-block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        position: relative !important;
-        z-index: 100 !important;
-      }
-
-      /* Ensure publish workflow buttons are visible */
-      .netlify-cms .cms-workflow-button,
-      .netlify-cms .cms-workflow-button-primary,
-      .netlify-cms .cms-workflow-button-secondary,
-      .netlify-cms .cms-workflow-button-success,
-      .netlify-cms .cms-workflow-button-danger,
-      .netlify-cms .cms-workflow-button-warning,
-      .netlify-cms .cms-workflow-button-info,
-      .netlify-cms .cms-workflow-button-light,
-      .netlify-cms .cms-workflow-button-dark,
-      .netlify-cms .cms-workflow-button-link {
-        display: inline-block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        position: relative !important;
-        z-index: 100 !important;
-      }
-
-      /* Ensure all CMS buttons are visible and properly styled */
-      .netlify-cms button,
-      .netlify-cms .btn,
-      .netlify-cms input[type="submit"],
-      .netlify-cms input[type="button"] {
-        display: inline-block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        position: relative !important;
-        z-index: 100 !important;
-        min-height: 48px !important;
-        min-width: 48px !important;
-        padding: 0.75rem 1.5rem !important;
-        font-size: 1rem !important;
-        border-radius: 8px !important;
-        border: 1px solid var(--border-light) !important;
-        background: var(--primary) !important;
-        color: white !important;
-        cursor: pointer !important;
-        transition: all 0.2s ease !important;
-      }
-
-      .netlify-cms button:hover,
-      .netlify-cms .btn:hover,
-      .netlify-cms input[type="submit"]:hover,
-      .netlify-cms input[type="button"]:hover {
-        background: var(--primary-dark) !important;
-        transform: translateY(-1px) !important;
-        box-shadow: var(--shadow-md) !important;
-      }
-
       /* Responsive Design */
       @media (max-width: 768px) {
         .header-container {
@@ -506,7 +412,6 @@
           padding: 1.5rem;
           margin: 0 -1rem;
           border-radius: 0;
-          min-height: 500px;
         }
 
         .cms-header {
@@ -518,86 +423,6 @@
         .mobile-tips {
           margin: 0 -1rem;
           border-radius: 0;
-        }
-
-        .welcome-features {
-          grid-template-columns: 1fr;
-          gap: 0.75rem;
-        }
-
-        .feature-item {
-          padding: 0.875rem;
-        }
-
-        .tips-list {
-          gap: 0.5rem;
-        }
-
-        .tips-item {
-          padding: 0.875rem;
-        }
-
-        /* Mobile CMS Styles */
-        .cms-container {
-          min-height: 350px;
-          margin: 0 -1rem;
-          border-radius: 0;
-        }
-
-        /* Mobile Form Styles */
-        .netlify-cms input,
-        .netlify-cms textarea,
-        .netlify-cms select {
-          font-size: 16px !important; /* Prevents zoom on iOS */
-          min-height: 48px !important;
-          padding: 0.75rem !important;
-          border-radius: 8px !important;
-        }
-
-        .netlify-cms .field {
-          margin-bottom: 1.5rem !important;
-        }
-
-        .netlify-cms .field-label {
-          font-size: 1rem !important;
-          margin-bottom: 0.5rem !important;
-          font-weight: 600 !important;
-        }
-
-        .netlify-cms .field-description {
-          font-size: 0.875rem !important;
-          margin-top: 0.25rem !important;
-        }
-
-        .netlify-cms .btn {
-          min-height: 48px !important;
-          padding: 0.875rem 1.5rem !important;
-          font-size: 1rem !important;
-          border-radius: 8px !important;
-        }
-
-        .netlify-cms .collection-list {
-          gap: 1rem !important;
-        }
-
-        .netlify-cms .collection-list-item {
-          padding: 1rem !important;
-          border-radius: 8px !important;
-        }
-
-        /* Ensure CMS buttons are visible on mobile */
-        .netlify-cms button,
-        .netlify-cms .btn,
-        .netlify-cms input[type="submit"],
-        .netlify-cms input[type="button"] {
-          display: inline-block !important;
-          visibility: visible !important;
-          opacity: 1 !important;
-          min-height: 48px !important;
-          min-width: 48px !important;
-          padding: 0.875rem 1.5rem !important;
-          font-size: 1rem !important;
-          border-radius: 8px !important;
         }
       }
 
@@ -666,51 +491,10 @@
           --border-medium: #475569;
         }
       }
-
-      /* Mobile-specific active states */
-      .btn:active,
-      .feature-item:active,
-      .tips-item:active {
-        transform: scale(0.98);
-      }
-
-      /* Mobile-specific selection styles */
-      ::selection {
-        background: var(--primary);
-        color: white;
-      }
-
-      ::-moz-selection {
-        background: var(--primary);
-        color: white;
-      }
-
-      /* Mobile Performance Optimizations */
-      @media (prefers-reduced-motion: reduce) {
-        * {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-        }
-      }
-
-      /* Header auto-hide on scroll */
-      .header-hidden {
-        transform: translateY(-100%);
-      }
-
-      /* Ensure CMS content is not blocked by header */
-      .cms-section {
-        margin-top: 1rem;
-      }
-
-      .netlify-cms {
-        padding-top: 1rem;
-      }
     </style>
 </head>
 <body>
-    <header class="header" id="adminHeader">
+    <header class="header">
         <div class="header-container">
             <div class="header-brand">
                 <div class="brand-logo">
@@ -902,9 +686,9 @@
 
             // Header auto-hide on scroll to prevent blocking CMS fields
             function initHeaderAutoHide() {
-                const header = document.getElementById('adminHeader');
+                const header = document.querySelector('.header');
                 let lastScrollTop = 0;
-                let scrollThreshold = 100;
+                let scrollThreshold = 50; // Reduced threshold for smaller header
                 
                 window.addEventListener('scroll', () => {
                     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -954,7 +738,7 @@
                         btn.style.visibility = 'visible';
                         btn.style.opacity = '1';
                         btn.style.position = 'relative';
-                        btn.style.zIndex = '100';
+                        btn.style.zIndex = '1001';
                         btn.style.minHeight = '48px';
                         btn.style.minWidth = '48px';
                         btn.style.padding = '0.75rem 1.5rem';
