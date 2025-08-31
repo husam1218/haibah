@@ -384,6 +384,94 @@
         margin-bottom: 0.5rem;
       }
 
+      /* Ensure CMS content is not blocked by header */
+      .cms-section {
+        margin-top: 1rem;
+        padding-top: 2rem;
+      }
+
+      .netlify-cms {
+        padding-top: 1rem;
+        margin-top: 1rem;
+      }
+
+      /* Force CMS to be visible */
+      .netlify-cms {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 1000 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 500px !important;
+      }
+
+      /* CMS editor */
+      .netlify-cms .cms-editor {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 1000 !important;
+      }
+
+      /* CMS preview */
+      .netlify-cms .cms-preview {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 1000 !important;
+      }
+
+      /* Force all CMS buttons to be visible */
+      .netlify-cms *[class*="btn"],
+      .netlify-cms *[class*="button"],
+      .netlify-cms button,
+      .netlify-cms .btn,
+      .netlify-cms input[type="submit"],
+      .netlify-cms input[type="button"],
+      .cms-section button,
+      .cms-section .btn,
+      .cms-section input[type="submit"],
+      .cms-section input[type="button"],
+      .cms-container button,
+      .cms-container .btn,
+      .cms-container input[type="submit"],
+      .cms-container input[type="button"] {
+        display: inline-block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 1001 !important;
+        min-height: 48px !important;
+        min-width: 48px !important;
+        padding: 0.75rem 1.5rem !important;
+        font-size: 1rem !important;
+        border-radius: 8px !important;
+        border: 1px solid #e2e8f0 !important;
+        background: #6366f1 !important;
+        color: white !important;
+        cursor: pointer !important;
+        margin: 0.25rem !important;
+        font-family: inherit !important;
+        text-decoration: none !important;
+        line-height: 1.5 !important;
+        vertical-align: middle !important;
+        user-select: none !important;
+        white-space: nowrap !important;
+      }
+
+      /* Header auto-hide on scroll */
+      .header {
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .header-hidden {
+        transform: translateY(-100%);
+      }
+
       /* Responsive Design */
       @media (max-width: 768px) {
         .header-container {
